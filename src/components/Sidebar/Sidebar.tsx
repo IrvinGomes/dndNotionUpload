@@ -32,6 +32,7 @@ export const Sidebar: React.FC<any> = () => {
             sx={{
               minWidth: 0,
               mr: 1,
+              ml: 2,
               justifyContent: "center",
               opacity: open ? 1 : 0,
             }}

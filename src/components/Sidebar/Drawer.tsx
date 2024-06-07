@@ -1,4 +1,4 @@
-import { CSSObject, Theme, styled } from "@mui/material";
+import { CSSObject, Theme, styled, useMediaQuery } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 
 export const drawerWidth = 240;
@@ -28,7 +28,9 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
+  padding: useMediaQuery("(max-width:599px)")
+    ? theme.spacing(0, 0)
+    : theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));

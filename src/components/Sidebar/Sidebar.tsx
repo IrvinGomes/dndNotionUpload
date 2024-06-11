@@ -18,7 +18,7 @@ import DnDLogo from "../../icons/dndLogo";
 
 export const Sidebar: React.FC<any> = ({ handleTab }) => {
   const listMenu = ["Items", "Monsters"];
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);

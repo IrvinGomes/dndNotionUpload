@@ -16,7 +16,7 @@ import MonsterIcon from "../../icons/MonsterIcon";
 import ItemsIcon from "../../icons/ItemIcon";
 import DnDLogo from "../../icons/dndLogo";
 
-export const Sidebar: React.FC<any> = () => {
+export const Sidebar: React.FC<any> = ({ handleTab }) => {
   const listMenu = ["Items", "Monsters"];
   const [open, setOpen] = React.useState(false);
 
@@ -28,21 +28,23 @@ export const Sidebar: React.FC<any> = () => {
     <Box sx={{ display: "flex" }}>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <ListItemIcon
-            sx={{
-              minWidth: 0,
-              mr: 1,
-              ml: 2,
-              justifyContent: "center",
-              opacity: open ? 1 : 0,
-            }}
-          >
-            <DnDLogo />
-          </ListItemIcon>
-          <ListItemText
-            primary={"DnD to Notion"}
-            sx={{ opacity: open ? 1 : 0 }}
-          />
+          <ListItemButton sx={{ px: 0 }} onClick={() => handleTab(0)}>
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: 1,
+                ml: 2,
+                justifyContent: "center",
+                opacity: open ? 1 : 0,
+              }}
+            >
+              <DnDLogo />
+            </ListItemIcon>
+            <ListItemText
+              primary={"DnD to Notion"}
+              sx={{ opacity: open ? 1 : 0 }}
+            />
+          </ListItemButton>
           <ListItemIcon
             sx={{
               minWidth: 0,
@@ -56,7 +58,7 @@ export const Sidebar: React.FC<any> = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {listMenu.map((item: string) => (
+          {listMenu.map((item: string, index) => (
             <ListItem key={item} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
@@ -64,6 +66,7 @@ export const Sidebar: React.FC<any> = () => {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
+                onClick={() => handleTab(index + 1)}
               >
                 <ListItemIcon
                   sx={{

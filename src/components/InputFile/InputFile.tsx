@@ -3,13 +3,25 @@ import { Box, Typography } from "@mui/material";
 import { DropzoneBox } from "./DropzoneBox";
 import { useDropzone } from "react-dropzone";
 import UploadIcon from "@mui/icons-material/Upload";
+import Papa from "papaparse";
 
-export const InputFile: React.FC<any> = () => {
+interface CsvData {
+  [key: string]: string;
+}
+
+export const InputFile: React.FC<any> = ({ setCsvData }) => {
   const [fileName, setFileName] = useState<string>();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
-      setFileName(acceptedFiles[0].name);
+      const file = acceptedFiles[0];
+      setFileName(file.name);
+      Papa.parse<CsvData>(file, {
+        header: true,
+        complete: (results) => {
+          setCsvData(results.data);
+        },
+      });
     }
   }, []);
 

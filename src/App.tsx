@@ -17,7 +17,7 @@ function App() {
   return (
     <Box display={"flex"}>
       <Sidebar handleTab={handleTab} value={value} />
-      <Box display={"flex"} width={"100%"}>
+      <Box width={"100%"}>
         <TabPanel value={value} index={0}>
           <Home />
         </TabPanel>

@@ -16,7 +16,7 @@ export const TabPanel: React.FC<TabPanelProps> = (props: TabPanelProps) => {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      <Box sx={{ p: 2}}>{children}</Box>
+      <Box sx={{ p: 3}}>{children}</Box>
     </div>
   );
 };
